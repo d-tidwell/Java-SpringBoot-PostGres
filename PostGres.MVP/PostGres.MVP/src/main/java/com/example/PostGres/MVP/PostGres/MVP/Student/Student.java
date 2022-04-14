@@ -1,6 +1,7 @@
 package com.example.PostGres.MVP.PostGres.MVP.Student;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 //annotations for JDA to create table and fields
@@ -27,6 +29,9 @@ public class Student {
 	private String name;
 	private String email;
 	private LocalDate dob;
+	
+	//transient gives ability to dynamically make with gettr 
+	@Transient
 	private Integer age;
 	
 	
@@ -36,24 +41,22 @@ public class Student {
 	
 	//all fields
 	public Student(Long id, String name, 
-			String email, LocalDate dob, 
-			Integer age) {
+			String email, LocalDate dob) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.dob = dob;
-		this.age = age;
+	
 	}
 	
 	//w/o ID
 	public Student( String name, String email, 
-		 LocalDate localDate, Integer age) {
+		 LocalDate localDate) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.dob = localDate;
-		this.age = age;
 	}
 	 
 
@@ -91,7 +94,7 @@ public class Student {
 	}
 
 	public Integer getAge() {
-		return age;
+		return Period.between(dob, LocalDate.now()).getYears();
 	}
 
 	public void setAge(Integer age) {
