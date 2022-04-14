@@ -36,17 +36,17 @@ public class StudentController {
 		return studentService.getStudents();
 	}
 	
-	@PostMapping
+	@PostMapping(path= "/addStudent")
 	public void registerNewStudent(@RequestBody Student student) {
 		studentService.addNewStudent(student);
 	}
 	
-	@DeleteMapping(path= "{studentId}")
+	@DeleteMapping(path= "/dropStudent/{studentId}")
 	public void deleteStudent(@PathVariable("studentID") Long studentId) {
 		studentService.deleteStudent(studentId);
 	}
 	
-	@PutMapping(path= "{studentId}")
+	@PutMapping(path= "/editStudent/{studentId}")
 	public void updateStudent(
 			@PathVariable("studentId") Long studentId,
 			@RequestParam(required = false) String name,
