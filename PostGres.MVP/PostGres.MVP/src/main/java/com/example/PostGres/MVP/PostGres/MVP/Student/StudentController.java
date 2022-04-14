@@ -16,6 +16,11 @@ public class StudentController {
 	private final StudentService studentService;
 	
 	@Autowired
+	//autowired connects the instance studentServices to this constructor
+	//must also have the @Service on the StudentService class
+	//so the the two are connected at runtime and layered pattern of design 
+	//segregating the two is adhered to
+	
 	public StudentController(StudentService studentService) {
 		this.studentService = studentService;
 	}

@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
-
+//annotations for JDA to create table and fields
 @Entity
 @Table
 public class Student {
@@ -48,8 +48,7 @@ public class Student {
 	
 	//w/o ID
 	public Student( String name, String email, 
-			String string, LocalDate 
-			localDate, Integer age) {
+		 LocalDate localDate, Integer age) {
 		super();
 		this.name = name;
 		this.email = email;
